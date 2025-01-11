@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admit Card and Marksheet</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Universal styling reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #b3e5fc, #82b1ff);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            width: 220px;
+            background-color: #2b3e50;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+        }
+
+        .sidebar img.logo {
+            width: 80px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+        }
+        .sidebar img {
+            width: 80px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+        }
+
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #1d2a36;
+        }
+
+        .sidebar img.icon {
+            width: 25px;
+            margin-right: 15px;
+        }
+
+        /* Main content */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        /* Header styling */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1976d2;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .header .date, .header .user-info {
+            font-size: 14px;
+        }
+
+        .header .sign-out {
+            background-color: #04549e;
+            border: none;
+            color: #f8e6ec;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .header .sign-out:hover {
+            background-color: #02386a;
+        }
+
+        /* Document table styling */
+        h1 {
+            color: #ff0059;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .search-container input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .search-container .search-icon {
+            margin-left: -40px;
+            width: 20px;
+            cursor: pointer;
+        }
+
+        #documentsTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #documentsTable th, #documentsTable td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        #documentsTable th {
+            background-color: #1976d2;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: normal;
+        }
+
+        #documentsTable tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        #documentsTable tbody tr:hover {
+            background-color: #e3f2fd;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <img src="DALL·E 2024-11-11 19.20.38 - Design a professional, modern logo for a website named 'Examination Management System'. The logo should incorporate symbols of education, exams, or te.jpg" alt="LOGO">
+        <a href="Dashboard.html"><img src="My exams.jpeg" alt="My Exams" class="icon"> My Exams</a>
+        <a href="com_pending.html"><img src="completed and pending.jpeg" alt="Completed and Pending" class="icon"> Completed & Pending Exams</a>
+        <a href="calendar.html"><img src="calender.jpeg" alt="Academic Calendar" class="icon"> Academic Calendar</a>
+        <a href="admit_marksheet.html"><img src="admit.jpeg" alt="Admit and Marksheet" class="icon"> Admit Card & Marksheet</a>
+        <a href="submit_doc.html"><img src="submitted docu.jpeg" alt="Submitted Documents" class="icon"> Submitted Documents</a>
+        <a href="issues.html"><img src="issues.jpeg" alt="Issues and Query" class="icon"> Issues and Query</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <div class="date">
+                <div>05 November, 2024</div>
+                <div>SEPTEMBER 2024 TERM</div>
+            </div>
+            <div class="user-info">Soutik Mandal</div>
+            <button class="sign-out" onclick="signOut()">SIGN OUT</button>
+        </div>
+
+        <h1>Student Documents</h1>
+
+        <!-- Search Container -->
+        <form class="search-container">
+            <input type="text" id="search-bar" placeholder="Search your documents">
+            <img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png" alt="Search">
+        </form>
+
+        <!-- Documents Table -->
+        <table id="documentsTable">
+            <thead>
+                <tr>
+                    <th>Document Type</th>
+                    <th>Document</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>ADMISSION_LETTER</td><td>Admission Letter</td></tr>
+                <tr><td>ADMIT_CARD</td><td>2024 Jun 25 | Sem 5 Grade Card</td></tr>
+                <tr><td>GRADE_CARD</td><td>2024 May 15 | Sem 5 Admit Card</td></tr>
+                <tr><td>ADMIT_CARD</td><td>2024 Jan 10 | Sem 4 Grade Card</td></tr>
+                <tr><td>GRADE_CARD</td><td>2023 Nov 10 | Sem 4 Admit Card</td></tr>
+                <tr><td>ADMIT_CARD</td><td>2023 Aug 07 | Sem 3 Grade Card</td></tr>
+                <tr><td>GRADE_CARD</td><td>2023 Aug 07 | Sem 3 Grade Card</td></tr>
+                <tr><td>ADMIT_CARD</td><td>2023 May 03 | Sem 3 Admit Card</td></tr>
+                <tr><td>GRADE_CARD</td><td>2023 Mar 15 | Sem 3 Grade Card</td></tr>
+                <tr><td>ADMIT_CARD</td><td>2022 Dec 3 | Sem 3 Admit Card</td></tr>
+                <tr><td>GRADE_CARD</td><td>2022 Jun 30 | Sem 2 Grade Card</td></tr>
+                <tr><td>ADMIT_CARD</td><td>2022 Apr 30 | Sem 2 Admit Card</td></tr>
+                <tr><td>GRADE_CARD</td><td>2022 Feb 10 | Sem 1 Grade Card</td></tr>
+                <tr><td>ADMIT_CARD</td><td>2021 Oct 20 | Sem 1 Admit Card</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Sign out function
+        function signOut() {
+            localStorage.clear();
+            sessionStorage.clear();
+            window.location.href = 'student_signin.html';
+        }
+    </script>
+</body>
+</html>
